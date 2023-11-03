@@ -2,8 +2,10 @@ import "./SelectedShop.css";
 import React from "react";
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
+import PropTypes from 'prop-types';
 
 const SelectedShop = ({ getShops }) => {
+  console.log("getShops:=====", getShops);
   const [shops, setShops] = useState([])
 
   useEffect(() => {
@@ -184,3 +186,7 @@ console.log('id:', id)
 };
 
 export default SelectedShop;
+
+SelectedShop.propTypes = {
+  getShops: PropTypes.func.isRequired,
+};
