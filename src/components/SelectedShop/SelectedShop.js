@@ -19,6 +19,32 @@ console.log("selectedShop:=====", selectedShop);
 
 
 
+
+const handleReviewUpdate = async (id, ratingKeyToIncrement) => {
+  console.log("Updating rating for ID:", id, " Incrementing:", ratingKeyToIncrement);
+
+  return fetch(`http://localhost:3001/SelectedShop/${id}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ ratingKey: ratingKeyToIncrement }), //id should not be in the body anymore, it's getting it from the URL 
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+    return response.json();
+  })
+  .then(updatedCoffeeShop => {
+    console.log('Updated Coffee Shop:', updatedCoffeeShop);
+  })
+  .catch(error => {
+    console.error('Request failed:', error);
+  });
+}
+
+
 // const handleReviewUpdate =(e) => {
 //   e.preventDefault();
 //   selectedShop.rating[e.target.value()] += 1
@@ -30,26 +56,34 @@ console.log("selectedShop:=====", selectedShop);
 //   postReview(bodyObj)
 // }
 console.log('id:', id)
-const handleReviewUpdate = (ratingKeyToIncrement) => {
-console.log("ratingKeyToIncrement:=====", ratingKeyToIncrement);
+// const handleReviewUpdate = async (id, ratingKeyToIncrement) => {
+//   console.log("Updating rating for ID:", id, " Incrementing:", ratingKeyToIncrement);
 
-  return (fetch(`http://localhost:3001/SelectedShop/${id}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ ratingKey: ratingKeyToIncrement, id: id }),
-  })
-    .then(response => response.json())
-    .then(updatedCoffeeShop => {
-      console.log('Updated Coffee Shop:', updatedCoffeeShop);
-    })
-    .catch(error => {
-      console.log('Request failed:', error);
-    })
-)}
+//   return fetch(`http://localhost:3001/SelectedShop/${id}`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({ ratingKey: ratingKeyToIncrement }),
+//   })
+//   .then(response => {
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok ' + response.statusText);
+//     }
+//     return response.json();
+//   })
+//   .then(updatedCoffeeShop => {
+//     console.log('Updated Coffee Shop:', updatedCoffeeShop);
+//   })
+//   .catch(error => {
+//     console.error('Request failed:', error);
+//   });
+// }
 
-handleReviewUpdate('thumbsUp')
+
+// You need to call the function with both the `id` and the rating key to increment.
+//handleReviewUpdate(1, 'thumbsUp'); // Assuming the ID of the coffee shop is 1.
+
 
 
 
@@ -94,10 +128,17 @@ handleReviewUpdate('thumbsUp')
               </p>
             </div>
             <div className='shop-info-right-container'>
-              <p>
-                <strong>Hours:</strong>
+              <div>
+                <strong>Hours:</strong> 
+                <ol>
+        {Object.entries(selectedShop.hours).map(([day, time]) => (
+            <li key={day}>
+                {day}: {time}
+            </li>
+        ))}
+        </ol>
 
-              </p>
+              </div>
                 {selectedShop.dineIn && <p>Dine In</p>}
                 {selectedShop.takeOut && <p>Take Out</p>}
                 {selectedShop.wheelchairAccessible && (
@@ -113,12 +154,27 @@ handleReviewUpdate('thumbsUp')
             </div>
         {/* thumbs container */}
             <div className='thumbs-container'>
-              <span role='img' aria-label='thumbs-up'>
+              <button>
+              <span role='img' aria-label='thumbs-up' onClick={(e) => {
+           handleReviewUpdate(selectedShop.id, 'thumbsUp');
+          // Optionally navigate programmatically after the update
+          // navigate(`/SelectedShop/${shop.id}`);
+          //will need to move the ONCLICK
+        }}>
                 👍
               </span>
-              <span role='img' aria-label='thumbs-down'>
+              </button>
+              <button>
+              <span role='img' aria-label='thumbs-down' onClick={(e) => {
+           handleReviewUpdate(selectedShop.id, 'thumbsDown');
+          // Optionally navigate programmatically after the update
+          // navigate(`/SelectedShop/${shop.id}`);
+          //will need to move the ONCLICK
+        }}>
                 👎
               </span>
+              </button>
+            
             </div>
           </div>
         </div>

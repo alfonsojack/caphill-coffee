@@ -26,8 +26,6 @@ function App() {
       .then(data => setShops(data))
       .catch(error => console.log(error.message))
   }, [])
-  
-
 
 
   return (
