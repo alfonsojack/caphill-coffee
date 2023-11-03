@@ -1,11 +1,16 @@
 import "./SelectedShop.css";
 import React from "react";
-import { useParams, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+
+import { useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
+import PropTypes from 'prop-types';
 
 const SelectedShop = ({ getShops }) => {
-  const [shops, setShops] = useState([]);
+  console.log("getShops:=====", getShops);
+  const [shops, setShops] = useState([])
+
   const [isRated, setIsRated] = useState(true);
+
 
   useEffect(() => {
     setIsRated(false);
@@ -139,3 +144,7 @@ const SelectedShop = ({ getShops }) => {
 };
 
 export default SelectedShop;
+
+SelectedShop.propTypes = {
+  getShops: PropTypes.func.isRequired,
+};
