@@ -53,14 +53,12 @@ const CardContainer = ( { shops }) => {
 const shopCards = shops.map((shop) => {
   return (
     <Link to={`/SelectedShop/${shop.id}`} key={shop.id}>
-        <div className="card" >
-          <Card
+      <Card
             name={shop.name}
             img={shop.img}
             // Do not pass handleReviewUpdate if you're not using it in Card component
-          />
-        </div>
-      </Link>
+      />
+    </Link>
 )
 })
   return (

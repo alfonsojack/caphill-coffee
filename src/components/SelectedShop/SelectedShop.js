@@ -113,6 +113,7 @@ console.log('id:', id)
               className='shop-img' 
             />
           </div>
+          <h2 className="shop-name">{selectedShop.name}</h2>
       {/* parent containers left & right */}
           <div className='shop-info-parent-container'>
             <div className='shop-info-left-container'>
