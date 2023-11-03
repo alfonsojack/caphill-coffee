@@ -1,6 +1,6 @@
 import './Card.css'
 
-const Card = ( { name, img }) => {
+const Card = ( { name, img}) => {
   return (
     <div className='card'>
       <img src={img}/>
