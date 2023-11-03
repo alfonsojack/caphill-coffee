@@ -1,6 +1,6 @@
 import "./SelectedShop.css";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const SelectedShop = ({ getShops }) => {
@@ -13,17 +13,15 @@ const SelectedShop = ({ getShops }) => {
       .then((data) => setShops(data))
       .catch((error) => console.log(error.message));
   }, []);
-  console.log("shops:=====", shops);
   const { id } = useParams();
 
   const selectedShop = shops.find((shop) => shop.id === parseInt(id));
-  console.log("selectedShop:=====", selectedShop);
 
   const handleReviewUpdate = async (id, ratingKeyToIncrement) => {
     console.log(
-      "Updating rating for ID:",
+      "Rating click for ID:",
       id,
-      " Incrementing:",
+      " Rating:",
       ratingKeyToIncrement
     );
     if (!isRated) {
@@ -52,14 +50,13 @@ const SelectedShop = ({ getShops }) => {
     }
   };
 
-  console.log("id:", id);
-
   return (
     <div className="selected-shop-container">
       {!selectedShop ? (
         <p>Loading</p>
       ) : (
         <div className="shop-card-container">
+          <Link to='/' className='home-button' >🏠</Link>
           <div className="img-container">
             <img
               src={selectedShop.img}
