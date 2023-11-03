@@ -69,8 +69,10 @@ const SelectedShop = ({ getShops }) => {
               className="shop-img"
             />
           </div>
-          <div className="shop-info-parent-container">
-            <div className="shop-info-left-container">
+          <h2 className="shop-name">{selectedShop.name}</h2>
+          <div className='shop-info-parent-container'>
+            <div className='shop-info-left-container'>
+
               <p>
                 <strong>Address:</strong> {selectedShop.address}
               </p>
