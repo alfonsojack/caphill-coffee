@@ -35,7 +35,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<CardContainer shops={shops}/>} />
-        <Route path='/SelectedShop/:id' element={<SelectedShop shops={shops} />} />
+        <Route path='/SelectedShop/:id' element={<SelectedShop getShops={getShops} />} />
         <Route path='/*' element={<Error />} />
       </Routes>
     </div>

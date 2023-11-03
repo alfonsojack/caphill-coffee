@@ -1,33 +1,67 @@
 import "./SelectedShop.css";
 import React from "react";
 import { useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
 
-const SelectedShop = ({ shops }) => {
+const SelectedShop = ({ getShops }) => {
+  const [shops, setShops] = useState([])
 
+  useEffect(() => {
+    getShops()
+      .then(data => setShops(data))
+      .catch(error => console.log(error.message))
+  }, [])
+  console.log("shops:=====", shops);
 const { id } = useParams();
 
 const selectedShop = shops.find((shop) => shop.id === parseInt(id));
+console.log("selectedShop:=====", selectedShop);
 
-const handleReviewUpdate =(e) => {
-  e.preventDefault();
-  selectedShop.rating[e.target.value()] += 1
-  const bodyObj = {
-    id: id,
-    rating,
 
-  }
-  postReview(bodyObj)
-}
 
-const postReview = (bodyObj) => {
- return fetch(`http://localhost:3001/api/v1/pathData/${id}`, {
-  method: "POST",
-  body: JSON.stringify(bodyObj),
-  headers: {
-    "Content-Type": "application/json",
-  }
- })
-}
+// const handleReviewUpdate =(e) => {
+//   e.preventDefault();
+//   selectedShop.rating[e.target.value()] += 1
+//   const bodyObj = {
+//     id: id,
+//     // rating,
+
+//   }
+//   postReview(bodyObj)
+// }
+console.log('id:', id)
+const handleReviewUpdate = (ratingKeyToIncrement) => {
+console.log("ratingKeyToIncrement:=====", ratingKeyToIncrement);
+
+  return (fetch(`http://localhost:3001/SelectedShop/${id}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ ratingKey: ratingKeyToIncrement, id: id }),
+  })
+    .then(response => response.json())
+    .then(updatedCoffeeShop => {
+      console.log('Updated Coffee Shop:', updatedCoffeeShop);
+    })
+    .catch(error => {
+      console.log('Request failed:', error);
+    })
+)}
+
+handleReviewUpdate('thumbsUp')
+
+
+
+// const postReview = (bodyObj) => {
+//  return fetch(`http://localhost:3001/api/v1/pathData/${id}`, {
+//   method: "POST",
+//   body: JSON.stringify(bodyObj),
+//   headers: {
+//     "Content-Type": "application/json",
+//   }
+//  })
+// }
 
 
 
@@ -35,7 +69,7 @@ const postReview = (bodyObj) => {
 // entire container
     <div className='selected-shop-container'>
       {/* tan box container */}
-      <div className='page-container'>
+      {!selectedShop ? (<p>Loading</p>) : (<div className='page-container'>
       {/* green box container */}
         <div className='shop-card-container'>
           <div className='img-container'>
@@ -75,7 +109,7 @@ const postReview = (bodyObj) => {
         {/* rating container */}
           <div className='rating-container'>
             <div className='average'>
-              <p>Average Rating: {selectedShop.rating}</p> 
+              <p>Average Rating: </p> 
             </div>
         {/* thumbs container */}
             <div className='thumbs-container'>
@@ -88,7 +122,7 @@ const postReview = (bodyObj) => {
             </div>
           </div>
         </div>
-      </div>
+      </div>)}
     </div>
   );
 };
