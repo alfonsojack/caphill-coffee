@@ -14,6 +14,16 @@ h1 {
   font-size: 40px;
 }
 
+h1:hover {
+  transition: 2s;
+  color: #808D88;
+}
+
+h1:active {
+  transition: 1s;
+  color: #D5B9AC
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 24px;

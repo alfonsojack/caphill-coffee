@@ -139,8 +139,7 @@ ul, .schedule {
 .thumb:hover {
   border: 5px solid #d5b9ac;
   cursor: pointer;
-  
-
+  transition: 1s;
 }
 
 .thumb:active {
@@ -183,8 +182,21 @@ ul, .schedule {
 .home-button {
   font-size: 50px;
   align-self: flex-end;
-  margin-left: -20px
+  margin-left: -20px;
+  border-bottom: 5px solid #35453B;
 }
+
+.home-button:hover {
+  cursor: pointer;
+  transition: 1s;
+  border-color: #808D88;
+}
+
+.home-button:active {
+  border-color: #d5b9ac;
+  transition: .5s
+}
+
 .shop-name {
   text-align: center;
   margin:0;
