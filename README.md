@@ -1,6 +1,6 @@
 <div align="center">
   
-# CAPHILL COFFEE FE
+# CAP HILL COFFEE (Front End)
 
   
 ##### Built With:
