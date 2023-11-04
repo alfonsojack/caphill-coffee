@@ -86,7 +86,7 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
 
   return (
     <div className='selected-shop-container'>
-      {selShopError ? (<Error error={selShopError} message="Something's wrong on our end. Click home to try again."/>) :
+      {selShopError ? (<Error error={selShopError} message="Something's wrong. Click home to try again."/>) :
       !selectedShop ? (
         <p>Loading</p>
       ) : (
@@ -106,8 +106,8 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
           {/* <h2 className='shop-name outside'>{selectedShop.name}</h2> */}
           <div className='shop-info-parent-container'>
             <div className='shop-info-left-container'>
-              <ul><p>
-                <strong>Address:</strong> {selectedShop.address}
+              <ul><p className="address">
+                <strong className="address-strong">Address:</strong> <span className="address-text">  {selectedShop.address}</span>
               </p>
               <p>
                 <strong>Phone number:</strong> {selectedShop.phoneNumber}
@@ -120,10 +120,10 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
               <p><strong>Take Out:</strong> {selectedShop.takeOut ? "  ✅" : "  ❌"}</p>
               <p><strong>Wheelchair Accessible:</strong> {selectedShop.wheelchairAccessible ? "  ✅" : "  ❌"}</p>
               <p><strong>Food Provided:</strong>{selectedShop.foodProvided ? "  ✅" : "  ❌"}</p>
-              <p><strong>Contactless Pay:</strong>{selectedShop.contactlessPay ? " ✅" : "  ❌"}</p>
+              <p><strong>Contactless Pay:</strong>{selectedShop.contactlessPay ? " ✅" : "  ❌"}</p></ul>
             </div>
             <div className='shop-info-right-container'>
-              <div>
+              <div className='schedule'>
                 <strong>Hours:</strong>
                   {daysOfTheWeek.map(day => (
                     <p key={day}>
@@ -153,7 +153,7 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
               </div>
               <div className='thumbs-container'>
               <button
-                  className={upIsActive ? 'thumb active' : 'thumb'}
+                  className={upIsActive ? 'thumb activated' : 'thumb'}
                   onClick={(e) => {
                     // setUpIsActive(!upIsActive); // Toggle the active state
                     handleReviewUpdate(selectedShop.id, "thumbsUp");
@@ -162,7 +162,7 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
                   <span role='img' aria-label='thumbs-up'>👍</span>
                 </button>
               <button
-                  className={downIsActive ? 'thumb active' : 'thumb'}
+                  className={downIsActive ? 'thumb activated' : 'thumb'}
                   onClick={(e) => {
                   // setDownIsActive(!downIsActive); // Toggle the active state
                   handleReviewUpdate(selectedShop.id, "thumbsDown");
