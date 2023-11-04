@@ -1,7 +1,9 @@
 import './Error.css'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const Error = ({ error, message }) => {
+  
   return (
     <div className='error-cont'>
       <h2 className='error-h2'>ERROR</h2>
@@ -15,3 +17,8 @@ const Error = ({ error, message }) => {
 }
 
 export default Error
+
+Error.propTypes = {
+  error: PropTypes.string,
+  message: PropTypes.string.isRequired
+};

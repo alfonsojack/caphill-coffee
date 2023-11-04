@@ -16,4 +16,8 @@ export default Card
 Card.propTypes = {
   name: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
+  avgRating: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
 };
