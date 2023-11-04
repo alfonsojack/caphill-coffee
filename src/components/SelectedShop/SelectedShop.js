@@ -206,4 +206,5 @@ export default SelectedShop;
 
 SelectedShop.propTypes = {
   getShops: PropTypes.func.isRequired,
+  calculateAverageRating: PropTypes.func.isRequired,
 };

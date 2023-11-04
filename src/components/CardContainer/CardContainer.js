@@ -2,32 +2,26 @@ import "./CardContainer.css";
 import React, { useState, useEffect } from "react";
 import Card from "../Card/Card";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 const CardContainer = ({ shops, calculateAverageRating }) => {
-  
   const shopCards = shops.map((shop) => {
     return (
       <Link to={`/SelectedShop/${shop.id}`} key={shop.id}>
         <Card
-            className={`${shop.id}-card`}
-            name={shop.name}
-            img={shop.img}
-            avgRating={calculateAverageRating(shop)}
-            // Do not pass handleReviewUpdate if you're not using it in Card component
-       />
+          className={`${shop.id}-card`}
+          name={shop.name}
+          img={shop.img}
+          avgRating={calculateAverageRating(shop)}
+          // Do not pass handleReviewUpdate if you're not using it in Card component
+        />
       </Link>
-    )
-})
-  return (
-    <div className='card-container'>
-      {shopCards}
-    </div>
-  )
-}
+    );
+  });
+  return <div className='card-container'>{shopCards}</div>;
+};
 
 export default CardContainer;
-
 
 CardContainer.propTypes = {
   shops: PropTypes.arrayOf(
@@ -36,18 +30,19 @@ CardContainer.propTypes = {
       contactlessPay: PropTypes.bool.isRequired,
       dineIn: PropTypes.bool.isRequired,
       foodProvided: PropTypes.bool.isRequired,
-      hours: PropTypes.object.isRequired,
+      hours: PropTypes.objectOf(PropTypes.string).isRequired,
       id: PropTypes.number.isRequired,
       img: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       phoneNumber: PropTypes.string.isRequired,
       rating: PropTypes.shape({
-        thumbsUp: PropTypes.number.isRequired,
-        thumbsDown: PropTypes.number.isRequired,
+        thumbsUp: PropTypes.number,
+        thumbsDown: PropTypes.number,
       }).isRequired,
       takeOut: PropTypes.bool.isRequired,
       website: PropTypes.string.isRequired,
       wheelchairAccessible: PropTypes.bool.isRequired,
     })
   ).isRequired,
+  calculateAverageRating: PropTypes.func.isRequired,
 };
