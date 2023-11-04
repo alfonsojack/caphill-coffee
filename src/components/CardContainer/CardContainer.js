@@ -4,8 +4,18 @@ import Card from "../Card/Card";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const CardContainer = ({ shops, calculateAverageRating }) => {
+const CardContainer = ({  calculateAverageRating, getShops }) => {
+  const [shops, setShops] = useState([]);
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    getShops()
+      .then(data => setShops(data))
+      .catch(error => setError(error.message))
+  }, [])
+
   const shopCards = shops.map((shop) => {
+
     return (
       <Link to={`/SelectedShop/${shop.id}`} key={shop.id}>
         <Card
