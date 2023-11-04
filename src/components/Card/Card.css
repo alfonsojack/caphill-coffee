@@ -34,7 +34,8 @@ h4 {
   width: 400px; /* Set a fixed width for the cards */
   margin: 10px; /* Add some margin between the cards */
   padding: 20px;
-  border: 5px solid #d5b9ac;
+  box-shadow: 0 0 8px #808D88, 0 0 12px #808D88, 0 0 17px #808D88, 0 0 22px #808D88;
+  border: 5px solid #35453b
 }
 
 
@@ -43,14 +44,17 @@ h4 {
   cursor: pointer;
   transition-duration: 0.2s;
   transform: scale(1.025);
-  box-shadow: 0 0 8px #808080, 0 0 12px #808080, 0 0 17px #808080, 0 0 22px #808080;
-  border: 5px solid #d5b9ac;
+  box-shadow: 0 0 8px #808D88, 0 0 12px #808D88, 0 0 17px #808D88, 0 0 22px #808D88;
+  border: 5px solid #808D88
 }
 
 .card:active {
   transition-duration: 0.2s;
   transform: scale(1.055);
-  border: 5px solid #35453b;
+  background-color: #808D88;
+  box-shadow: 0 0 8px #d5b9ac, 0 0 12px #d5b9ac, 0 0 17px #d5b9ac, 0 0 22px #d5b9ac;
+  border: 2px solid #d5b9ac;
+  border-radius: 10px;
 }
 
 
