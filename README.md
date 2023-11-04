@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# CAPHILL COFFEE FE
+<div align="center">
+  
+##### Built With:
+  <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" /> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" /> <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+ <img src="https://shields.io/badge/react-black?logo=react&style=for-the-badge" />
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+##### Testing Technologies:
+Fully tested e2e with Cypress!
 
-In the project directory, you can run:
+  -----
+## Abstract:
+Welcome to our Cap Hill Coffee Shops app! 
 
-### `npm start`
+This app works in tandem with our backend database to create a directory of coffee shops in the Capitol Hill neighborhood of Denver, CO. At the home page, you can scroll through a list of coffee shops and select one to view details like their hours of operation, wheelchair accessibility, address, and more! Once you’ve visited the coffee shop you can leave a rating on our website and help future users find the best coffee in Cap Hill.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Preview of App: (took screenshots. Will insert via markdown)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<img width="1440" alt="Home" src="https://github.com/alfonsojack/caphill-coffee/assets/136117363/431d37a4-fafd-4add-9928-f8887d749a41">
+<img width="1440" alt="Selected Shop" src="https://github.com/alfonsojack/caphill-coffee/assets/136117363/3e962640-6fc4-4379-bbb0-6ca5ed5015f1">
+<img width="1440" alt="Selected Shop 2" src="https://github.com/alfonsojack/caphill-coffee/assets/136117363/09068b60-7c0f-4e06-b586-62d446c7f179">
 
-### `npm test`
+## Contributors:
+[Nicole Lam](https://github.com/Nicolelam8891) 
+[Jack Alfonso](https://github.com/alfonsojack) 
+[Marisa Wyatt](https://github.com/Marisa5280) 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Context:
+This is the second project of Mod 3 at Turing School of Software & Design. We were given ~1.5 weeks to create this project from scratch using a stretch technology new to us. Having little experience in building a back end, we relied on mentors, fellow students, and lots of documentation to be able to link our UI to the data we created. We probably spent 50-60 hours on this project over the time period given. This project is our first attempt at making a full-stack app, and we used many new technologies such as Express.js, Knex.js, and PostgreSQL.
 
-### `npm run build`
+## Learning Goals:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Continue working with React fundamentals
+- Test React components & asynchronous JS
+- Test user flows using cypress e2e testing
+- Create a multi-page UX using Router
+- Create an app that retrieves info from and posts info to our created database
