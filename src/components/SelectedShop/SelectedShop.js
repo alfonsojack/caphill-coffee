@@ -7,7 +7,6 @@ import PropTypes from "prop-types";
 
 const SelectedShop = ({ getShops, calculateAverageRating }) => {
   const { id } = useParams();
-  console.log("getShops:=====", getShops);
   const [shops, setShops] = useState([]);
   const [isRated, setIsRated] = useState(
     "You have already rated this shop, try another!"
@@ -19,7 +18,6 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
   const [selShopError, setSelShopError] = useState("");
 
   useEffect(() => {
-    console.log("helloooooooo", id);
     setIsRated("Rate this shop!");
     getShops()
       .then((data) => {
@@ -36,18 +34,15 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
 
   const findSelectedShop = (shops) => {
     const foundShop = shops.find((shop) => shop.id === parseInt(id));
-    console.log("foundit", foundShop);
     return setSelectedShop(foundShop);
   };
 
   const setAvg = (shops) => {
-    // const foundShop = shops.find((shop) => shop.id === parseInt(id));
     const avg = calculateAverageRating(shops);
     return setAvgRating(avg);
   };
 
   const handleReviewUpdate = async (id, ratingKeyToIncrement) => {
-    console.log("Rating click for ID:", id, " Rating:", ratingKeyToIncrement);
     if (isRated === "Rate this shop!" || isRated.includes("Request failed")) {
       setIsRated("You have already rated this shop, try another!");
       return fetch(`http://localhost:3001/SelectedShop/${id}`, {
@@ -66,9 +61,7 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
           return response.json();
         })
         .then((updatedCoffeeShop) => {
-          console.log("Updated Coffee Shop:", updatedCoffeeShop);
           setAvg(updatedCoffeeShop);
-          // Toggle the active state for thumbs buttons here
           if (ratingKeyToIncrement === "thumbsUp") {
             setUpIsActive(true);
             setDownIsActive(false);
@@ -94,7 +87,6 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
   ];
 
   return (
-
     <div className="selected-shop-container">
       {selShopError ? (
         <Error
@@ -119,8 +111,6 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
               className="shop-img"
             />
           </div>
-          {/* <h2 className='shop-name outside'>{selectedShop.name}</h2> */}
-
           <div className='shop-info-parent-container'>
             <div className='shop-info-left-container'>
               <ul><p className="address">
@@ -155,24 +145,13 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
               <p className="outside">Average Rating: {avgRating}%</p>
             </div>
             <div>
-              {/* <div> {isRated ? (
-                <p className='rated-msg outside'>
-                  You have already rated this shop, try another!
-                </p>
-              ) : (
-                <p className='unrated-msg outside'>Rate this shop!</p>
-              )}
-              </div> */}
               <div>
                 <p className="rated-msg outside">{isRated}</p>
               </div>
-
               <div className='thumbs-container'>
               <button
                   className={upIsActive ? 'thumb activated' : 'thumb'}
-
                   onClick={(e) => {
-                    // setUpIsActive(!upIsActive); // Toggle the active state
                     handleReviewUpdate(selectedShop.id, "thumbsUp");
                   }}
                 >
@@ -183,9 +162,7 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
 
               <button
                   className={downIsActive ? 'thumb activated' : 'thumb'}
-
                   onClick={(e) => {
-                    // setDownIsActive(!downIsActive); // Toggle the active state
                     handleReviewUpdate(selectedShop.id, "thumbsDown");
                   }}
                 >

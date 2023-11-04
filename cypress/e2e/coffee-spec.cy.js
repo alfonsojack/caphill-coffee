@@ -33,9 +33,5 @@ describe("caphill coffee shops", () => {
     cy.get('[href="/SelectedShop/3"] > .card').click();
     cy.url().should("include", "SelectedShop/3");
     cy.get(".shop-name").should("contain", "Pablos Coffee");
-    // nicole's tests for content of selected shop
-    // assert that on mount the rating <p> says rate this shop!
-    // click on rating, assert that <p> text changed accordingly
-    // click home button and assert url to home route
   });
 });

@@ -13,7 +13,6 @@ const CardContainer = ({ shops, calculateAverageRating }) => {
           name={shop.name}
           img={shop.img}
           avgRating={calculateAverageRating(shop)}
-          // Do not pass handleReviewUpdate if you're not using it in Card component
         />
       </Link>
     );

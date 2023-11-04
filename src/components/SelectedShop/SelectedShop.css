@@ -6,7 +6,6 @@ p {
   padding-left: 30px;
   padding-right: 30px;
   margin: 10px
-  /* color: #FAF9F9; */
 }
 
 p, ol, li, ul, strong {
@@ -24,18 +23,7 @@ p, ol, li, ul, strong {
  align-items: center;
   width: 95%;
   padding: 3px 2px 3px 2px;
-  /* border: 5px solid black;
-  overflow: hidden;
-  border: 5px;
-  border-bottom: 5px solid #35453b;
-  display: inline-block;
-  box-shadow: 10px 10px 20px rgba(143, 17, 17, 0.1), 0px 8px 30px rgba(5, 5, 5, 0.13);
-  border-radius: 4px; */
 }
-
-/* .img-container:hover {
-  transform: scale(1.05); 
-} */
 
 .shop-img {
   width: 95%;
@@ -62,13 +50,6 @@ animation: slideFromLeft 0.5s forwards;
 .address-text {
   margin-left: 6px;
 }
-/* .address-text {
-  display: inline;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-} */
-
 
 .shop-info-left-container, .shop-info-right-container {
   display: flex;
@@ -83,9 +64,6 @@ animation: slideFromLeft 0.5s forwards;
   padding: 20px;
   background-color: #d5b9ac;
   background-color: #d5b9ac(255, 255, 255, 0.1); 
-  /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1); */
-  /* border-radius: 15px;  */
-  /* box-shadow: 0px 4px 6px rgba(10, 10, 10, 10);  */
   animation: slideFromLeft 0.90s forwards; 
 }
 
@@ -98,8 +76,6 @@ ul, .schedule {
   padding: 0px
 }
 
-
-
 .shop-card-container {
   display: flex;
   flex-direction: column;
@@ -107,13 +83,11 @@ ul, .schedule {
   justify-content: center;
   background-color: #35453B;
   border: 5px solid #d5b9ac;
-  box-shadow: 0 0 5px 5px #35453B; /* Evenly blurred shadow on all sides */
+  box-shadow: 0 0 5px 5px #35453B; 
   margin: 20px;
   height: 100%;
   padding: 20px;
 }
-
-
 
 @keyframes slideFromLeft {
   from {
@@ -133,7 +107,6 @@ ul, .schedule {
   width: 150px;
   border: 5px solid #35453B;
   border-radius: 100px;
-  
 }
 
 .thumb:hover {
@@ -177,8 +150,6 @@ ul, .schedule {
   margin-top: 40px;
 }
 
-
-
 .home-button {
   font-size: 50px;
   align-self: flex-end;
@@ -202,6 +173,7 @@ ul, .schedule {
   margin:0;
   flex: 1
 }
+
 .link-container {
   width: 100%;
   display: flex;
