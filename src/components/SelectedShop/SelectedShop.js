@@ -1,29 +1,54 @@
 import "./SelectedShop.css";
 import React from "react";
+import Error from "../Error/Error";
 import { useParams, Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import PropTypes from 'prop-types';
 
 const SelectedShop = ({ getShops, calculateAverageRating }) => {
+  const { id } = useParams();
   console.log("getShops:=====", getShops);
   const [shops, setShops] = useState([]);
+  const [isRated, setIsRated] = useState('You have already rated this shop, try another!');
+  const [avgRating, setAvgRating] = useState(0);
+  const [selectedShop, setSelectedShop] = useState(null)
+  const [upIsActive, setUpIsActive] = useState(false);
+  const [downIsActive, setDownIsActive] = useState(false);
+  const [selShopError, setSelShopError] = useState('')
 
-  const [isRated, setIsRated] = useState(true);
 
   useEffect(() => {
-    setIsRated(false);
+    console.log("helloooooooo", id);
+    setIsRated('Rate this shop!');
     getShops()
-      .then((data) => setShops(data))
-      .catch((error) => console.log(error.message));
+      .then((data) => {
+        if (data) {
+          setShops(data);
+          findSelectedShop(data);
+          setAvg(data.find((shop) => shop.id === parseInt(id)))
+        } else {
+          console.log("Data is undefined or empty.");
+        }
+      })
+      .catch((error) => setSelShopError(error.message));
   }, []);
-  const { id } = useParams();
 
-  const selectedShop = shops.find((shop) => shop.id === parseInt(id));
+  const findSelectedShop = (shops) => {
+    const foundShop = shops.find((shop) => shop.id === parseInt(id));
+    console.log("foundit", foundShop)
+    return setSelectedShop(foundShop)
+  }
+
+  const setAvg = (shops) => {
+    // const foundShop = shops.find((shop) => shop.id === parseInt(id));
+    const avg = calculateAverageRating(shops)
+    return setAvgRating(avg)
+  }
 
   const handleReviewUpdate = async (id, ratingKeyToIncrement) => {
     console.log("Rating click for ID:", id, " Rating:", ratingKeyToIncrement);
-    if (!isRated) {
-      setIsRated(true);
+    if (isRated === 'Rate this shop!' || isRated.includes('Request failed')) {
+      setIsRated('You have already rated this shop, try another!');
       return fetch(`http://localhost:3001/SelectedShop/${id}`, {
         method: "POST",
         headers: {
@@ -33,30 +58,42 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
       })
         .then((response) => {
           if (!response.ok) {
-            throw new Error(
-              "Network response was not ok " + response.statusText
-            );
+            throw new Error("Network response was not ok " + response.statusText);
           }
           return response.json();
         })
         .then((updatedCoffeeShop) => {
           console.log("Updated Coffee Shop:", updatedCoffeeShop);
+          setAvg(updatedCoffeeShop);
+          // Toggle the active state for thumbs buttons here
+          if (ratingKeyToIncrement === "thumbsUp") {
+            setUpIsActive(true);
+            setDownIsActive(false);
+          } else if (ratingKeyToIncrement === "thumbsDown") {
+            setUpIsActive(false);
+            setDownIsActive(true);
+          }
         })
         .catch((error) => {
-          console.error("Request failed:", error);
+          setIsRated(`Request failed: ${error.message}`);
         });
     }
   };
+  
+  
 
   return (
     <div className='selected-shop-container'>
-      {!selectedShop ? (
+      {selShopError ? (<Error error={selShopError} message="Something's wrong on our end. Click home to try again."/>) :
+      !selectedShop ? (
         <p>Loading</p>
       ) : (
         <div className='shop-card-container'>
-          <Link to='/' className='home-button'>
+            <div className="link-container">
+            <h2 className='shop-name outside'>{selectedShop.name}</h2>
+            <Link to='/' className='home-button'>
             🏠
-          </Link>
+            </Link></div>
           <div className='img-container'>
             <img
               src={selectedShop.img}
@@ -64,10 +101,10 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
               className='shop-img'
             />
           </div>
-          <h2 className='shop-name'>{selectedShop.name}</h2>
+          {/* <h2 className='shop-name outside'>{selectedShop.name}</h2> */}
           <div className='shop-info-parent-container'>
             <div className='shop-info-left-container'>
-              <p>
+              <ul><p>
                 <strong>Address:</strong> {selectedShop.address}
               </p>
               <p>
@@ -77,59 +114,73 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
                 <strong>Website:</strong>{" "}
                 <a href={selectedShop.website}>{selectedShop.website}</a>
               </p>
-            </div>
-            <div className='shop-info-right-container'>
-              <div>
-                <strong>Hours:</strong>
-                <ol>
-                  {Object.entries(selectedShop.hours).map(([day, time]) => (
-                    <li key={day}>
-                      {day}: {time}
-                    </li>
-                  ))}
-                </ol>
-              </div>
               <p><strong>Dine In:</strong> {selectedShop.dineIn ? "✅" : "❌"}</p>
               <p><strong>Take Out:</strong> {selectedShop.takeOut ? "✅" : "❌"}</p>
               <p><strong>Wheelchair Accessible:</strong> {selectedShop.wheelchairAccessible ? "✅" : "❌"}</p>
               <p><strong>Food Provided:</strong>{selectedShop.foodProvided ? "✅" : "❌"}</p>
-              <p><strong>Contactless Pay:</strong>{selectedShop.contactlessPay ? "✅" : "❌"}</p>
+              <p><strong>Contactless Pay:</strong>{selectedShop.contactlessPay ? "✅" : "❌"}</p></ul>
+            </div>
+            <div className='shop-info-right-container'>
+              <div>
+                <strong>Hours:</strong>
+                <ul>
+                  {Object.entries(selectedShop.hours).map(([day, time]) => (
+                    <p key={day}>
+                      <strong>{day}: {time}</strong>
+                    </p>
+                  ))}
+                </ul>
+              </div>
+              {/* <p><strong>Dine In:</strong> {selectedShop.dineIn ? "✅" : "❌"}</p>
+              <p><strong>Take Out:</strong> {selectedShop.takeOut ? "✅" : "❌"}</p>
+              <p><strong>Wheelchair Accessible:</strong> {selectedShop.wheelchairAccessible ? "✅" : "❌"}</p> */}
+              {/* <p><strong>Food Provided:</strong>{selectedShop.foodProvided ? "✅" : "❌"}</p>
+              <p><strong>Contactless Pay:</strong>{selectedShop.contactlessPay ? "✅" : "❌"}</p> */}
             </div>
           </div>
           <div className="rating-container">
-            <div className="average">
-              <p>Average Rating: {calculateAverageRating(selectedShop)}%</p>
+            <div className="average outside">
+              <p className="outside">Average Rating: {avgRating}%</p>
             </div>
-            <div className='thumbs-container'>
-              {isRated ? (
-                <p className='rated-msg'>
+            <div >
+              {/* <div> {isRated ? (
+                <p className='rated-msg outside'>
                   You have already rated this shop, try another!
                 </p>
               ) : (
-                <p className='unrated-msg'>Rate this shop!</p>
+                <p className='unrated-msg outside'>Rate this shop!</p>
               )}
-              <button>
-                <span
-                  role='img'
-                  aria-label='thumbs-up'
+              </div> */}
+              <div>
+                <p className='rated-msg outside'>
+                  {isRated}
+                </p>
+              </div>
+              <div className='thumbs-container'>
+              <button
+                  className={upIsActive ? 'thumb active' : 'thumb'}
                   onClick={(e) => {
+                    // setUpIsActive(!upIsActive); // Toggle the active state
                     handleReviewUpdate(selectedShop.id, "thumbsUp");
                   }}
                 >
-                  👍
-                </span>
-              </button>
-              <button>
+                  <span role='img' aria-label='thumbs-up'>👍</span>
+                </button>
+              <button
+                  className={downIsActive ? 'thumb active' : 'thumb'}
+                  onClick={(e) => {
+                  // setDownIsActive(!downIsActive); // Toggle the active state
+                  handleReviewUpdate(selectedShop.id, "thumbsDown");
+                  }}
+              >
                 <span
                   role='img'
                   aria-label='thumbs-down'
-                  onClick={(e) => {
-                    handleReviewUpdate(selectedShop.id, "thumbsDown");
-                  }}
                 >
                   👎
                 </span>
               </button>
+              </div>
             </div>
           </div>
         </div>
