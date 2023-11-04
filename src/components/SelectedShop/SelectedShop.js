@@ -114,7 +114,7 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
           {/* <h2 className='shop-name outside'>{selectedShop.name}</h2> */}
           <div className='shop-info-parent-container'>
             <div className='shop-info-left-container'>
-              <ul><p>
+              <p>
                 <strong>Address:</strong> {selectedShop.address}
               </p>
               <p>

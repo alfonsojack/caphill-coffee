@@ -1,0 +1,28 @@
+{
+  "id": 1,
+  "name": "Dazbog Coffee",
+  "img": "https://lh3.googleusercontent.com/p/AF1QipMzYGEA6hJa3NAXnfJRN5dmXRK5QKMmNFQbOf7k=s1360-w1360-h1020",
+  "address": "1201 E 9th Ave, Denver, CO 80218",
+  "hours": {
+    "Friday": "6:00am - 4:00pm",
+    "Monday": "6:00am - 4:00pm",
+    "Sunday": "7:00am - 5:00pm",
+    "Tuesday": "6:00am - 4:00pm",
+    "Saturday": "7:00am - 5:00pm",
+    "Thursday": "6:00am - 4:00pm",
+    "Wednesday": "6:00am - 4:00pm"
+  },
+  "phoneNumber": "303-837-1275",
+  "website": "https://dazbog.com",
+  "foodProvided": true,
+  "dineIn": true,
+  "takeOut": true,
+  "wheelchairAccessible": true,
+  "contactlessPay": null,
+  "rating": {
+    "thumbsUp": 2,
+    "thumbsDown": 1
+  },
+  "created_at": "2023-11-03T16:33:11.968Z",
+  "updated_at": "2023-11-03T16:33:11.968Z"
+}
