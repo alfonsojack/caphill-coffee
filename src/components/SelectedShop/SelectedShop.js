@@ -78,7 +78,7 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
           }
         })
         .catch((error) => {
-          setIsRated(`Request failed: ${error.message}`);
+          setIsRated(`Request failed: ${error}`);
         });
     }
   };
