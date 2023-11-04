@@ -1,8 +1,8 @@
 import "./SelectedShop.css";
 import React from "react";
-import { useParams, Link } from "react-router-dom"
-import { useState, useEffect } from "react"
-import PropTypes from 'prop-types';
+import { useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 const SelectedShop = ({ getShops, calculateAverageRating }) => {
   console.log("getShops:=====", getShops);
@@ -48,7 +48,15 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
     }
   };
 
-  const daysOfTheWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday" , "Saturday" , "Sunday"];
+  const daysOfTheWeek = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
 
   return (
     <div className='selected-shop-container'>
@@ -83,23 +91,37 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
             <div className='shop-info-right-container'>
               <div>
                 <strong>Hours:</strong>
-                
-                  {daysOfTheWeek.map(day => (
-                    <p key={day}>
-                      <strong>{day}</strong>: {selectedShop.hours[day]}
-                    </p>
-                  ))}
-                
+
+                {daysOfTheWeek.map((day) => (
+                  <p key={day}>
+                    <strong>{day}</strong>: {selectedShop.hours[day]}
+                  </p>
+                ))}
               </div>
-              <p><strong>Dine In:</strong> {selectedShop.dineIn ? "  ✅" : "  ❌"}</p>
-              <p><strong>Take Out:</strong> {selectedShop.takeOut ? "  ✅" : "  ❌"}</p>
-              <p><strong>Wheelchair Accessible:</strong> {selectedShop.wheelchairAccessible ? "  ✅" : "  ❌"}</p>
-              <p><strong>Food Provided:</strong>{selectedShop.foodProvided ? "  ✅" : "  ❌"}</p>
-              <p><strong>Contactless Pay:</strong>{selectedShop.contactlessPay ? " ✅" : "  ❌"}</p>
+              <p>
+                <strong>Dine In:</strong>{" "}
+                {selectedShop.dineIn ? "  ✅" : "  ❌"}
+              </p>
+              <p>
+                <strong>Take Out:</strong>{" "}
+                {selectedShop.takeOut ? "  ✅" : "  ❌"}
+              </p>
+              <p>
+                <strong>Wheelchair Accessible:</strong>{" "}
+                {selectedShop.wheelchairAccessible ? "  ✅" : "  ❌"}
+              </p>
+              <p>
+                <strong>Food Provided:</strong>
+                {selectedShop.foodProvided ? "  ✅" : "  ❌"}
+              </p>
+              <p>
+                <strong>Contactless Pay:</strong>
+                {selectedShop.contactlessPay ? " ✅" : "  ❌"}
+              </p>
             </div>
           </div>
-          <div className="rating-container">
-            <div className="average">
+          <div className='rating-container'>
+            <div className='average'>
               <p>Average Rating: {calculateAverageRating(selectedShop)}%</p>
             </div>
             <div className='thumbs-container'>
