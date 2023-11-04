@@ -82,6 +82,8 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
   
   
 
+  const daysOfTheWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday" , "Saturday" , "Sunday"];
+
   return (
     <div className='selected-shop-container'>
       {selShopError ? (<Error error={selShopError} message="Something's wrong on our end. Click home to try again."/>) :
@@ -114,28 +116,21 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
                 <strong>Website:</strong>{" "}
                 <a href={selectedShop.website}>{selectedShop.website}</a>
               </p>
-              <p><strong>Dine In:</strong> {selectedShop.dineIn ? "✅" : "❌"}</p>
-              <p><strong>Take Out:</strong> {selectedShop.takeOut ? "✅" : "❌"}</p>
-              <p><strong>Wheelchair Accessible:</strong> {selectedShop.wheelchairAccessible ? "✅" : "❌"}</p>
-              <p><strong>Food Provided:</strong>{selectedShop.foodProvided ? "✅" : "❌"}</p>
-              <p><strong>Contactless Pay:</strong>{selectedShop.contactlessPay ? "✅" : "❌"}</p></ul>
+              <p><strong>Dine In:</strong> {selectedShop.dineIn ? "  ✅" : "  ❌"}</p>
+              <p><strong>Take Out:</strong> {selectedShop.takeOut ? "  ✅" : "  ❌"}</p>
+              <p><strong>Wheelchair Accessible:</strong> {selectedShop.wheelchairAccessible ? "  ✅" : "  ❌"}</p>
+              <p><strong>Food Provided:</strong>{selectedShop.foodProvided ? "  ✅" : "  ❌"}</p>
+              <p><strong>Contactless Pay:</strong>{selectedShop.contactlessPay ? " ✅" : "  ❌"}</p>
             </div>
             <div className='shop-info-right-container'>
               <div>
                 <strong>Hours:</strong>
-                <ul>
-                  {Object.entries(selectedShop.hours).map(([day, time]) => (
+                  {daysOfTheWeek.map(day => (
                     <p key={day}>
-                      <strong>{day}: {time}</strong>
+                      <strong>{day}</strong>: {selectedShop.hours[day]}
                     </p>
                   ))}
-                </ul>
               </div>
-              {/* <p><strong>Dine In:</strong> {selectedShop.dineIn ? "✅" : "❌"}</p>
-              <p><strong>Take Out:</strong> {selectedShop.takeOut ? "✅" : "❌"}</p>
-              <p><strong>Wheelchair Accessible:</strong> {selectedShop.wheelchairAccessible ? "✅" : "❌"}</p> */}
-              {/* <p><strong>Food Provided:</strong>{selectedShop.foodProvided ? "✅" : "❌"}</p>
-              <p><strong>Contactless Pay:</strong>{selectedShop.contactlessPay ? "✅" : "❌"}</p> */}
             </div>
           </div>
           <div className="rating-container">
