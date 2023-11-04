@@ -5,8 +5,8 @@ const Card = ( { name, img, avgRating}) => {
   return (
     <div className='card'>
       <img src={img} alt={`${name} image`}/>
-      <h3>{name}</h3>
-      <h4>Rating: {avgRating}%</h4>
+      <h3 className='card-shop'>{name}</h3>
+      <h4 className='card-rating'>Rating: {avgRating}%</h4>
     </div>
   )
 }
