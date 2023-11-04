@@ -94,6 +94,7 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
   ];
 
   return (
+
     <div className="selected-shop-container">
       {selShopError ? (
         <Error
@@ -101,6 +102,7 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
           message="Something's wrong. Click home to try again."
         />
       ) : !selectedShop ? (
+
         <p>Loading</p>
       ) : (
         <div className="shop-card-container">
@@ -118,10 +120,11 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
             />
           </div>
           {/* <h2 className='shop-name outside'>{selectedShop.name}</h2> */}
-          <div className="shop-info-parent-container">
-            <div className="shop-info-left-container">
-              <p>
-                <strong>Address:</strong> {selectedShop.address}
+
+          <div className='shop-info-parent-container'>
+            <div className='shop-info-left-container'>
+              <ul><p className="address">
+                <strong className="address-strong">Address:</strong> <span className="address-text">  {selectedShop.address}</span>
               </p>
               <p>
                 <strong>Phone number:</strong> {selectedShop.phoneNumber}
@@ -130,29 +133,14 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
                 <strong>Website:</strong>{" "}
                 <a href={selectedShop.website}>{selectedShop.website}</a>
               </p>
-              <p>
-                <strong>Dine In:</strong>{" "}
-                {selectedShop.dineIn ? "  ✅" : "  ❌"}
-              </p>
-              <p>
-                <strong>Take Out:</strong>{" "}
-                {selectedShop.takeOut ? "  ✅" : "  ❌"}
-              </p>
-              <p>
-                <strong>Wheelchair Accessible:</strong>{" "}
-                {selectedShop.wheelchairAccessible ? "  ✅" : "  ❌"}
-              </p>
-              <p>
-                <strong>Food Provided:</strong>
-                {selectedShop.foodProvided ? "  ✅" : "  ❌"}
-              </p>
-              <p>
-                <strong>Contactless Pay:</strong>
-                {selectedShop.contactlessPay ? " ✅" : "  ❌"}
-              </p>
+              <p><strong>Dine In:</strong> {selectedShop.dineIn ? "  ✅" : "  ❌"}</p>
+              <p><strong>Take Out:</strong> {selectedShop.takeOut ? "  ✅" : "  ❌"}</p>
+              <p><strong>Wheelchair Accessible:</strong> {selectedShop.wheelchairAccessible ? "  ✅" : "  ❌"}</p>
+              <p><strong>Food Provided:</strong>{selectedShop.foodProvided ? "  ✅" : "  ❌"}</p>
+              <p><strong>Contactless Pay:</strong>{selectedShop.contactlessPay ? " ✅" : "  ❌"}</p></ul>
             </div>
-            <div className="shop-info-right-container">
-              <div>
+            <div className='shop-info-right-container'>
+              <div className='schedule'>
                 <strong>Hours:</strong>
                 {daysOfTheWeek.map((day) => (
                   <p key={day}>
@@ -178,9 +166,11 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
               <div>
                 <p className="rated-msg outside">{isRated}</p>
               </div>
-              <div className="thumbs-container">
-                <button
-                  className={upIsActive ? "thumb active" : "thumb"}
+
+              <div className='thumbs-container'>
+              <button
+                  className={upIsActive ? 'thumb activated' : 'thumb'}
+
                   onClick={(e) => {
                     // setUpIsActive(!upIsActive); // Toggle the active state
                     handleReviewUpdate(selectedShop.id, "thumbsUp");
@@ -190,8 +180,10 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
                     👍
                   </span>
                 </button>
-                <button
-                  className={downIsActive ? "thumb active" : "thumb"}
+
+              <button
+                  className={downIsActive ? 'thumb activated' : 'thumb'}
+
                   onClick={(e) => {
                     // setDownIsActive(!downIsActive); // Toggle the active state
                     handleReviewUpdate(selectedShop.id, "thumbsDown");
