@@ -9,7 +9,7 @@ p {
   /* color: #FAF9F9; */
 }
 
-p, ol, li, ul {
+p, ol, li, ul, strong {
   color: #35453B
 }
 
@@ -43,7 +43,8 @@ p, ol, li, ul {
   max-height: 500px;
   object-fit: cover;
   padding: 0px;
-  border: 5px solid #d5b9ac
+  box-shadow: 0 0 8px #808D88, 0 0 12px #808D88, 0 0 17px #808D88, 0 0 22px #808D88;
+  border: 5px solid #35453b
 }
 
 .shop-info-parent-container {
@@ -53,12 +54,29 @@ width: 90%;
 animation: slideFromLeft 0.5s forwards; 
 }
 
+.address {
+  display: flex;
+  flex-direction: row;
+  padding-right: 0;
+}
+.address-text {
+  margin-left: 6px;
+}
+/* .address-text {
+  display: inline;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} */
+
+
 .shop-info-left-container, .shop-info-right-container {
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: flex-start;
-  border: 5px solid #808D88;
+  box-shadow: 0 0 8px #808D88, 0 0 12px #808D88, 0 0 17px #808D88, 0 0 22px #808D88;
+  border: 5px solid #35453b;
   width: 40%;
   font-size: 20px;
   font-family: Gotu;
@@ -71,7 +89,7 @@ animation: slideFromLeft 0.5s forwards;
   animation: slideFromLeft 0.90s forwards; 
 }
 
-ul {
+ul, .schedule {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -114,6 +132,7 @@ ul {
   height: 150px;
   width: 150px;
   border: 5px solid #35453B;
+  border-radius: 100px;
   
 }
 
@@ -123,8 +142,15 @@ ul {
   
 
 }
-.active {
-  border: 5px solid #808D88;
+
+.thumb:active {
+  background-color: #d5b9ac;
+  transition: .5s
+}
+
+.activated {
+  box-shadow: 0 0 8px #808D88, 0 0 12px #808D88, 0 0 17px #808D88, 0 0 22px #808D88;
+  border: 5px solid #808D88
 }
 
 .thumbs-container {
@@ -149,6 +175,7 @@ ul {
   flex: column;
   align-items: center;
   justify-content: center;
+  margin-top: 40px;
 }
 
 
