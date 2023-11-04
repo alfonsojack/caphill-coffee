@@ -1,14 +1,16 @@
 import "./SelectedShop.css";
 import React from "react";
 
-import { useParams } from "react-router-dom"
-import { useState, useEffect } from "react"
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types';
+
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+
 
 const SelectedShop = ({ getShops, calculateAverageRating }) => {
   console.log("getShops:=====", getShops);
-  const [shops, setShops] = useState([])
+  const [shops, setShops] = useState([]);
 
   const [isRated, setIsRated] = useState(true);
 
@@ -23,12 +25,7 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
   const selectedShop = shops.find((shop) => shop.id === parseInt(id));
 
   const handleReviewUpdate = async (id, ratingKeyToIncrement) => {
-    console.log(
-      "Rating click for ID:",
-      id,
-      " Rating:",
-      ratingKeyToIncrement
-    );
+    console.log("Rating click for ID:", id, " Rating:", ratingKeyToIncrement);
     if (!isRated) {
       setIsRated(true);
       return fetch(`http://localhost:3001/SelectedShop/${id}`, {
@@ -56,23 +53,24 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
   };
 
   return (
-    <div className="selected-shop-container">
+    <div className='selected-shop-container'>
       {!selectedShop ? (
         <p>Loading</p>
       ) : (
-        <div className="shop-card-container">
-          <Link to='/' className='home-button' >🏠</Link>
-          <div className="img-container">
+        <div className='shop-card-container'>
+          <Link to='/' className='home-button'>
+            🏠
+          </Link>
+          <div className='img-container'>
             <img
               src={selectedShop.img}
-              alt="coffee shop picture"
-              className="shop-img"
+              alt='coffee shop picture'
+              className='shop-img'
             />
           </div>
-          <h2 className="shop-name">{selectedShop.name}</h2>
+          <h2 className='shop-name'>{selectedShop.name}</h2>
           <div className='shop-info-parent-container'>
             <div className='shop-info-left-container'>
-
               <p>
                 <strong>Address:</strong> {selectedShop.address}
               </p>
@@ -84,7 +82,7 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
                 <a href={selectedShop.website}>{selectedShop.website}</a>
               </p>
             </div>
-            <div className="shop-info-right-container">
+            <div className='shop-info-right-container'>
               <div>
                 <strong>Hours:</strong>
                 <ol>
@@ -95,30 +93,29 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
                   ))}
                 </ol>
               </div>
-              {selectedShop.dineIn && <p>Dine In</p>}
-              {selectedShop.takeOut && <p>Take Out</p>}
-              {selectedShop.wheelchairAccessible && (
-                <p>Wheelchair Accessible</p>
-              )}
-              {selectedShop.foodProvided && <p>Food Provided</p>}
+              <p><strong>Dine In:</strong> {selectedShop.dineIn ? "✅" : "❌"}</p>
+              <p><strong>Take Out:</strong> {selectedShop.takeOut ? "✅" : "❌"}</p>
+              <p><strong>Wheelchair Accessible:</strong> {selectedShop.wheelchairAccessible ? "✅" : "❌"}</p>
+              <p><strong>Food Provided:</strong>{selectedShop.foodProvided ? "✅" : "❌"}</p>
+              <p><strong>Contactless Pay:</strong>{selectedShop.contactlessPay ? "✅" : "❌"}</p>
             </div>
           </div>
           <div className="rating-container">
             <div className="average">
               <p>Average Rating: {calculateAverageRating(selectedShop)}%</p>
             </div>
-            <div className="thumbs-container">
+            <div className='thumbs-container'>
               {isRated ? (
-                <p className="rated-msg">
+                <p className='rated-msg'>
                   You have already rated this shop, try another!
                 </p>
               ) : (
-                <p className="unrated-msg">Rate this shop!</p>
+                <p className='unrated-msg'>Rate this shop!</p>
               )}
               <button>
                 <span
-                  role="img"
-                  aria-label="thumbs-up"
+                  role='img'
+                  aria-label='thumbs-up'
                   onClick={(e) => {
                     handleReviewUpdate(selectedShop.id, "thumbsUp");
                   }}
@@ -128,8 +125,8 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
               </button>
               <button>
                 <span
-                  role="img"
-                  aria-label="thumbs-down"
+                  role='img'
+                  aria-label='thumbs-down'
                   onClick={(e) => {
                     handleReviewUpdate(selectedShop.id, "thumbsDown");
                   }}
