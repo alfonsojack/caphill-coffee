@@ -1,12 +1,14 @@
 import "./SelectedShop.css";
 import React from "react";
 
+
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const SelectedShop = ({ getShops }) => {
+
+const SelectedShop = ({ getShops, calculateAverageRating }) => {
   console.log("getShops:=====", getShops);
   const [shops, setShops] = useState([]);
 
@@ -98,9 +100,9 @@ const SelectedShop = ({ getShops }) => {
               <p><strong>Contactless Pay:</strong>{selectedShop.contactlessPay ? "✅" : "❌"}</p>
             </div>
           </div>
-          <div className='rating-container'>
-            <div className='average'>
-              <p>Average Rating: </p>
+          <div className="rating-container">
+            <div className="average">
+              <p>Average Rating: {calculateAverageRating(selectedShop)}%</p>
             </div>
             <div className='thumbs-container'>
               {isRated ? (

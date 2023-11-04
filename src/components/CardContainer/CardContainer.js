@@ -4,7 +4,7 @@ import Card from "../Card/Card";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 import PropTypes from 'prop-types'
 
-const CardContainer = ({ shops }) => {
+const CardContainer = ({ shops, calculateAverageRating }) => {
   
   const shopCards = shops.map((shop) => {
     return (
@@ -12,6 +12,7 @@ const CardContainer = ({ shops }) => {
         <Card
             name={shop.name}
             img={shop.img}
+            avgRating={calculateAverageRating(shop)}
             // Do not pass handleReviewUpdate if you're not using it in Card component
        />
       </Link>
