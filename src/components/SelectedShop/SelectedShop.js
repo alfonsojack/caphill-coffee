@@ -48,6 +48,8 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
     }
   };
 
+  const daysOfTheWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday" , "Saturday" , "Sunday"];
+
   return (
     <div className='selected-shop-container'>
       {!selectedShop ? (
@@ -81,19 +83,19 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
             <div className='shop-info-right-container'>
               <div>
                 <strong>Hours:</strong>
-                <ol>
-                  {Object.entries(selectedShop.hours).map(([day, time]) => (
-                    <li key={day}>
-                      {day}: {time}
-                    </li>
+                
+                  {daysOfTheWeek.map(day => (
+                    <p key={day}>
+                      <strong>{day}</strong>: {selectedShop.hours[day]}
+                    </p>
                   ))}
-                </ol>
+                
               </div>
-              <p><strong>Dine In:</strong> {selectedShop.dineIn ? "✅" : "❌"}</p>
-              <p><strong>Take Out:</strong> {selectedShop.takeOut ? "✅" : "❌"}</p>
-              <p><strong>Wheelchair Accessible:</strong> {selectedShop.wheelchairAccessible ? "✅" : "❌"}</p>
-              <p><strong>Food Provided:</strong>{selectedShop.foodProvided ? "✅" : "❌"}</p>
-              <p><strong>Contactless Pay:</strong>{selectedShop.contactlessPay ? "✅" : "❌"}</p>
+              <p><strong>Dine In:</strong> {selectedShop.dineIn ? "  ✅" : "  ❌"}</p>
+              <p><strong>Take Out:</strong> {selectedShop.takeOut ? "  ✅" : "  ❌"}</p>
+              <p><strong>Wheelchair Accessible:</strong> {selectedShop.wheelchairAccessible ? "  ✅" : "  ❌"}</p>
+              <p><strong>Food Provided:</strong>{selectedShop.foodProvided ? "  ✅" : "  ❌"}</p>
+              <p><strong>Contactless Pay:</strong>{selectedShop.contactlessPay ? " ✅" : "  ❌"}</p>
             </div>
           </div>
           <div className="rating-container">
