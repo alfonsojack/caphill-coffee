@@ -1,12 +1,8 @@
 import "./SelectedShop.css";
 import React from "react";
-
-
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-
+import { useParams, Link } from "react-router-dom"
+import { useState, useEffect } from "react"
+import PropTypes from 'prop-types';
 
 const SelectedShop = ({ getShops, calculateAverageRating }) => {
   console.log("getShops:=====", getShops);
