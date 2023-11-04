@@ -5,10 +5,10 @@ h2 {
 .card-container {
   align-items: center;
   justify-content: center;
-  background-color: #808D88;
-  border: 5px solid #808D88;
+  background-color: #35453B;
+  border: 5px solid #d5b9ac;
   margin: 20px;
-  height: 70%;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   grid-gap: 10px;

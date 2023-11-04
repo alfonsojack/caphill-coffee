@@ -7,11 +7,16 @@ h3 {
 }
 
 img {
-  border: 2px solid #35453b;
+  border: 5px solid #35453b;
   width: auto; /* Set the image width to 100% */
   height: 70%; /* Maintain aspect ratio */
   margin-bottom: 15px;
 }
+
+
+/* img:active {
+  border: 5px solid #35453b;
+} */
 
 h4 {
   font-family: Sacramento;
@@ -29,20 +34,23 @@ h4 {
   width: 400px; /* Set a fixed width for the cards */
   margin: 10px; /* Add some margin between the cards */
   padding: 20px;
-  box-shadow: 0 0 5px #35453b, 0 0 10px #35453b, 0 0 15px #35453b, 0 0 20px #35453b;
+  border: 5px solid #d5b9ac;
 }
+
+
 
 .card:hover {
   cursor: pointer;
   transition-duration: 0.2s;
   transform: scale(1.025);
-  box-shadow: 0 0 8px #35453b, 0 0 12px #35453b, 0 0 17px #35453b, 0 0 22px #35453b;
+  box-shadow: 0 0 8px #808080, 0 0 12px #808080, 0 0 17px #808080, 0 0 22px #808080;
+  border: 5px solid #d5b9ac;
 }
 
 .card:active {
   transition-duration: 0.2s;
   transform: scale(1.055);
-  box-shadow: 0 0 5px #1a1e22, 0 0 10px #1a1e22, 0 0 15px #1a1e22, 0 0 20px #1a1e22;
+  border: 5px solid #35453b;
 }
 
 
