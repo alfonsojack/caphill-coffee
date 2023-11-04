@@ -8,7 +8,7 @@ describe("caphill coffee shops", () => {
   });
 
   it("shows coffee shop cards on load, and can navigate shop", () => {
-    cy.get(".App").get(".header").should("contain", "☕️    Cap Hill Coffee    ☕️");
+    cy.get(".header").contains("h1", "☕️ Cap Hill Coffee ☕️")
     cy.get(".card-container").get(".card").should("have.length", 3);
     cy.get(".card-container").first().should("contain", "Dazbog Coffee");
     cy.get('img[alt="Dazbog Coffee image"]').should(
