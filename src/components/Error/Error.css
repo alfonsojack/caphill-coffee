@@ -1,0 +1,19 @@
+.error-cont {
+  background-color: #d5b9ac;
+  border: 5px solid red;
+  margin: 20px;
+  color: #35453B;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-home-button {
+  font-size: 100px;
+}
+
+.error-h2 {
+  font-size: 50px;
+}

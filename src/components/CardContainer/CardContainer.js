@@ -10,6 +10,7 @@ const CardContainer = ({ shops, calculateAverageRating }) => {
     return (
       <Link to={`/SelectedShop/${shop.id}`} key={shop.id}>
         <Card
+            className={`${shop.id}-card`}
             name={shop.name}
             img={shop.img}
             avgRating={calculateAverageRating(shop)}

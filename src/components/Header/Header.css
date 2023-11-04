@@ -3,8 +3,11 @@
   font-family: Aboreto;
   background-color: #35453B;
   color: #D5B9AC;
-  padding: 10px;
-  text-align: center;
+  padding: 4px;
+  display: flex;
+  flex: row;
+
+  margin-left: 19px
 }
 
 h1 {
