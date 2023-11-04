@@ -28,7 +28,7 @@ describe('Caphill Coffee shop error handling', () => {
     cy.get('.error-h3-error').should("contain", "Cannot read properties of undefined (reading 'rating')");
     cy.get('.error-h3-msg').should("contain", "Something's wrong. Click home to try again.");
     cy.get('.error-home-button').click().url().should("include", "/");
-    cy.get(".App").get(".header").should("contain", "☕️    Cap Hill Coffee    ☕️");
+    cy.get(".header").contains("h1", "☕️ Cap Hill Coffee ☕️")
     cy.get(".card-container").get(".card").should("have.length", 3);
   });
 
