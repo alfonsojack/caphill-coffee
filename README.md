@@ -17,7 +17,7 @@ Welcome to our Cap Hill Coffee Shops app!
 
 This app works in tandem with our backend database to create a directory of coffee shops in the Capitol Hill neighborhood of Denver, CO. At the home page, you can scroll through a list of coffee shops and select one to view details like their hours of operation, wheelchair accessibility, address, and more! Once you’ve visited the coffee shop you can leave a rating on our website and help future users find the best coffee in Cap Hill.
 
-## Preview of App: (took screenshots. Will insert via markdown)
+## Preview of App: 
 
 <img width="1440" alt="Home" src="https://github.com/alfonsojack/caphill-coffee/assets/136117363/431d37a4-fafd-4add-9928-f8887d749a41">
 <img width="1440" alt="Selected Shop" src="https://github.com/alfonsojack/caphill-coffee/assets/136117363/3e962640-6fc4-4379-bbb0-6ca5ed5015f1">
