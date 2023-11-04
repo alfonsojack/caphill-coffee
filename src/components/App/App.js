@@ -21,6 +21,13 @@ function App() {
       })
   }
   
+  const calculateAverageRating = (shop) => {
+    const totalRatings = shop.rating.thumbsUp + shop.rating.thumbsDown
+    const avgRatingUnfixed = shop.rating.thumbsUp / totalRatings
+    const avgRating = (avgRatingUnfixed * 100).toFixed(0)
+    return avgRating
+  }
+
   useEffect(() => {
     getShops()
       .then(data => setShops(data))
@@ -32,8 +39,8 @@ function App() {
     <div className='App'>
       <Header />
       <Routes>
-        <Route path='/' element={<CardContainer shops={shops}/>} />
-        <Route path='/SelectedShop/:id' element={<SelectedShop getShops={getShops} />} />
+        <Route path='/' element={<CardContainer shops={shops} calculateAverageRating={calculateAverageRating}/>} />
+        <Route path='/SelectedShop/:id' element={<SelectedShop getShops={getShops} calculateAverageRating={calculateAverageRating} />} />
         <Route path='/*' element={<Error />} />
       </Routes>
     </div>
