@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 const SelectedShop = ({ getShops, calculateAverageRating }) => {
+
   const { id } = useParams();
   const [shops, setShops] = useState([]);
   const [isRated, setIsRated] = useState(

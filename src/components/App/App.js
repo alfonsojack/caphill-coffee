@@ -34,7 +34,6 @@ function App() {
       .catch(error => setError(error.message))
   }, [])
 
-
   return (
     <div className='App'>
       <Header />
@@ -44,7 +43,7 @@ function App() {
         </div>
       ) : (
       <Routes>
-        <Route path='/' element={<CardContainer shops={shops} calculateAverageRating={calculateAverageRating}/>} />
+        <Route path='/' element={<CardContainer shops={shops} calculateAverageRating={calculateAverageRating} getShops={getShops}/>} />
         <Route path='/SelectedShop/:id' element={<SelectedShop getShops={getShops} calculateAverageRating={calculateAverageRating} />} />
         <Route path='/*' element={<Error error={error} message="You've gone down the wrong path. Click home to retrack your steps"/>} />
       </Routes>
