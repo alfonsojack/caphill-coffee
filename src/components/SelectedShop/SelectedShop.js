@@ -82,7 +82,15 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
   
   
 
-  const daysOfTheWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday" , "Saturday" , "Sunday"];
+  const daysOfTheWeek = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
 
   return (
     <div className='selected-shop-container'>
