@@ -31,4 +31,17 @@ describe('Caphill Coffee shop error handling', () => {
     cy.get(".App").get(".header").should("contain", "☕️    Cap Hill Coffee    ☕️");
     cy.get(".card-container").get(".card").should("have.length", 3);
   });
+
+  it('Displays error information for an unsuccessful POST', () => {
+    cy.intercept("GET", "http://localhost:3001", {
+      statusCode: 200,
+      fixture: "coffeeShops"
+    }).as("shops");
+    cy.intercept("POST", "http://localhost:3001/SelectedShop/3", {
+      statusCode: 500,
+    });
+    cy.visit("http://localhost:3000/SelectedShop/3");
+    cy.get('.thumbs-container').get('.thumb').first().click();
+    cy.get('.rated-msg').should("contain", "Request failed: TypeError: _Error_Error__WEBPACK_IMPORTED_MODULE_2__.default is not a constructor");
+  });
 })
