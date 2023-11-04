@@ -3,14 +3,14 @@ import React from "react";
 
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 
-const SelectedShop = ({ getShops }) => {
+const SelectedShop = ({ getShops, calculateAverageRating }) => {
   console.log("getShops:=====", getShops);
   const [shops, setShops] = useState([])
 
   const [isRated, setIsRated] = useState(true);
-
 
   useEffect(() => {
     setIsRated(false);
@@ -105,7 +105,7 @@ const SelectedShop = ({ getShops }) => {
           </div>
           <div className="rating-container">
             <div className="average">
-              <p>Average Rating: </p>
+              <p>Average Rating: {calculateAverageRating(selectedShop)}%</p>
             </div>
             <div className="thumbs-container">
               {isRated ? (
