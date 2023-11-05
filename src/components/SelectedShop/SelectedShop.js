@@ -49,7 +49,7 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
       return fetch(`http://localhost:3001/SelectedShop/${id}`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "text/plain",
         },
         body: JSON.stringify({ ratingKey: ratingKeyToIncrement }),
       })
