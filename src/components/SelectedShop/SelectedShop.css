@@ -186,3 +186,23 @@ ul, .schedule {
   font-family: Gotu;
   font-size: 1.5em
 }
+@media screen and (max-width: 768px) {
+  .shop-img {
+    /* Adjust the styles for smaller screens */
+    width: 90%;
+    max-height: 300px;
+    /* Add any other necessary adjustments */
+  }
+
+  .shop-info-parent-container {
+    /* Adjust the styles for smaller screens */
+    flex-direction: column;
+    /* Add any other necessary adjustments */
+  }
+
+  .shop-info-left-container, .shop-info-right-container {
+    /* Adjust the styles for smaller screens */
+    width: 90%;
+    /* Add any other necessary adjustments */
+  }
+}
