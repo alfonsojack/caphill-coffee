@@ -47,7 +47,7 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
   const handleReviewUpdate = async (id, ratingKeyToIncrement) => {
     if (isRated === "Rate this shop!" || isRated.includes("Request failed")) {
       setIsRated("You have already rated this shop, try another!");
-      const apiUrl = `https://caphill-coffee-brown.vercel.app/SelectedShop/${id}`
+      const apiUrl = process.env.REACT_APP_API_URL + `/SelectedShop/${id}`
       console.log(apiUrl)
       return fetch(apiUrl, {
         method: "POST",
@@ -57,9 +57,6 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
         body: JSON.stringify({ ratingKey: ratingKeyToIncrement }),
       })
         .then((response) => {
-          console.log("Response Status:", response.status);
-          // Log response headers
-          console.log("Response Headers:", response.headers);
           if (!response.ok) {
             throw new Error(
               "Network response was not ok " + response.statusText
@@ -68,7 +65,6 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
           return response.json();
         })
         .then((updatedCoffeeShop) => {
-          console.log("Response Body:", updatedCoffeeShop);
           setAvg(updatedCoffeeShop);
           if (ratingKeyToIncrement === "thumbsUp") {
             setUpIsActive(true);
@@ -79,7 +75,6 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
           }
         })
         .catch((error) => {
-          console.log("Request failed:", error);
           setIsRated(`Request failed: ${error}`);
         });
     }

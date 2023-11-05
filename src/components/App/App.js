@@ -12,7 +12,7 @@ function App() {
 
   const getShops = () => {
     console.log(process.env.REACT_APP_API_URL)
-    return fetch(`https://caphill-coffee-brown.vercel.app/`)
+    return fetch(process.env.REACT_APP_API_URL)
       .then(response => {
         if(!response.ok) {
           throw new Error(`${response.status} ${response.statusText}`)
@@ -53,4 +53,3 @@ function App() {
 }
 
 export default App;
-
