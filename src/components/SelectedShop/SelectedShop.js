@@ -46,7 +46,8 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
   const handleReviewUpdate = async (id, ratingKeyToIncrement) => {
     if (isRated === "Rate this shop!" || isRated.includes("Request failed")) {
       setIsRated("You have already rated this shop, try another!");
-      return fetch(process.env.REACT_APP_API_URL + `/SelectedShop/${id}`, {
+      const apiUrl = process.env.REACT_APP_API_URL + `/SelectedShop/${id}`
+      return fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
