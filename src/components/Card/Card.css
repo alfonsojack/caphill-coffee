@@ -1,6 +1,6 @@
 h3 {
   font-family: Gotu;
-  font-size: 1.8em;
+  font-size: 1.3em;
   color: #35453b;
   padding: 0;
   margin: 0;
@@ -15,7 +15,7 @@ img {
 
 h4 {
   font-family: Sacramento;
-  font-size: 1.4em;
+  font-size: 1.2em;
   color: #35453b;
   padding-bottom: 15px;
   margin: 0;
@@ -25,8 +25,8 @@ h4 {
   display: flex;
   flex-direction: column;
   background-color: #d5b9ac;
-  height:400px; 
-  width: 400px; 
+  height:300px; 
+  width: 300px; 
   margin: 10px;
   padding: 20px;
   box-shadow: 0 0 8px #808D88, 0 0 12px #808D88, 0 0 17px #808D88, 0 0 22px #808D88;
