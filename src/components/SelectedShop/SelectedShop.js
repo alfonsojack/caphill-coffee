@@ -52,7 +52,7 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
       return fetch(apiUrl, {
         method: "POST",
         headers: {
-          "Content-Type": "text/plain",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ ratingKey: ratingKeyToIncrement }),
       })
