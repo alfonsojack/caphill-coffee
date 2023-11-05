@@ -13,7 +13,7 @@ Fully tested e2e with Cypress!
 
   -----
 ## Abstract:
-Welcome to our Cap Hill Coffee Shops app! 
+Welcome to our [Cap Hill Coffee Shops app](https://caphill-coffee-brown.vercel.app/)! 
 
 This app works in tandem with our backend database to create a directory of coffee shops in the Capitol Hill neighborhood of Denver, CO. At the home page, you can scroll through a list of coffee shops and select one to view details like their hours of operation, wheelchair accessibility, address, and more! Once you’ve visited the coffee shop you can leave a rating on our website and help future users find the best coffee in Cap Hill.
 
