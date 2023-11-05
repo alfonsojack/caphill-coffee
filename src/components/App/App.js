@@ -3,16 +3,15 @@ import Error from "../Error/Error";
 import Header from "../Header/Header";
 import CardContainer from "../CardContainer/CardContainer";
 import SelectedShop from "../SelectedShop/SelectedShop";
-import sampleCoffeeShops from "../../MockData";
 import { useState, useEffect } from "react";
-import { Routes, Route, Link, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [shops, setShops] = useState([]);
   const [error, setError] = useState('')
 
   const getShops = () => {
-    return fetch(`http://localhost:3001/`)
+    return fetch(process.env.REACT_APP_API_URL)
       .then(response => {
         if(!response.ok) {
           throw new Error(`${response.status} ${response.statusText}`)
