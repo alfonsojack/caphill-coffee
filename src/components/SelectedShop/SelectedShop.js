@@ -47,6 +47,7 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
     if (isRated === "Rate this shop!" || isRated.includes("Request failed")) {
       setIsRated("You have already rated this shop, try another!");
       const apiUrl = process.env.REACT_APP_API_URL + `/SelectedShop/${id}`
+      console.log(apiUrl)
       return fetch(apiUrl, {
         method: "POST",
         headers: {
