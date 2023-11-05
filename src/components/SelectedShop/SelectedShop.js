@@ -49,6 +49,7 @@ const SelectedShop = ({ getShops, calculateAverageRating }) => {
       const apiUrl = process.env.REACT_APP_API_URL + `/SelectedShop/${id}`
       return fetch(apiUrl, {
         method: "POST",
+        mode: 'no-cors',
         headers: {
           "Content-Type": "application/json",
         },
