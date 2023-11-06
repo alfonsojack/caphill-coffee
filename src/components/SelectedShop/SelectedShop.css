@@ -198,6 +198,7 @@ ul, .schedule {
   .home-button {
     align-self: center;
     font-size: 32px;
+    margin: 0;
   }
   .shop-img {
     max-height: 300px;
@@ -228,11 +229,19 @@ ul, .schedule {
     font-size: 24px;
   }
   .rated-msg {
-    font-size: 80%;
+    font-size: 60%;
+    margin-bottom: 20px;
   }
   .thumb {
     font-size: 30px;
     height: 60px;
     width: 60px
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  .shop-info-parent-container {
+    flex-direction: column;
   }
 }
