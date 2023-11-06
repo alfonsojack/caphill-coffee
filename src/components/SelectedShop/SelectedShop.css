@@ -186,23 +186,53 @@ ul, .schedule {
   font-family: Gotu;
   font-size: 1.5em
 }
-@media screen and (max-width: 768px) {
-  .shop-img {
-    /* Adjust the styles for smaller screens */
-    width: 90%;
-    max-height: 300px;
-    /* Add any other necessary adjustments */
+@media screen and (max-width: 500px) {
+  .shop-name {
+    font-size: 35px;
   }
-
-  .shop-info-parent-container {
-    /* Adjust the styles for smaller screens */
+  .link-container {
     flex-direction: column;
-    /* Add any other necessary adjustments */
+    margin-bottom: 0;
+    align-items: center;
   }
-
-  .shop-info-left-container, .shop-info-right-container {
-    /* Adjust the styles for smaller screens */
+  .home-button {
+    align-self: center;
+    font-size: 32px;
+  }
+  .shop-img {
+    max-height: 300px;
     width: 90%;
-    /* Add any other necessary adjustments */
+  }
+  .shop-info-parent-container {
+    flex-direction: column;
+  }
+  .shop-info-left-container, .shop-info-right-container {
+    font-size: 10px;
+    padding: 10px;
+    width: 90%;
+    margin-bottom: 25px;
+  }
+  .schedule {
+    align-items: center;
+  }
+  .address {
+    display: flex;
+    flex-direction: column;
+    padding-right: 0;
+  }
+  p {
+    margin: 0;
+  }
+  .average {
+    margin-top: 40px;
+    font-size: 24px;
+  }
+  .rated-msg {
+    font-size: 80%;
+  }
+  .thumb {
+    font-size: 30px;
+    height: 60px;
+    width: 60px
   }
 }
