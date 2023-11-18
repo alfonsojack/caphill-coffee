@@ -1,6 +1,6 @@
 <div align="center">
   
-# CAP HILL COFFEE (Front End)
+# CAP HILL COFFEE (Frontend)
 
   
 ##### Built With:
